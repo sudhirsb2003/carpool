@@ -1,0 +1,5 @@
+<table>
+<div id="latest_addition">
+  <% @latest_addition.each do |l| %>
+   <tr><td><%= image_tag l.photo.url(:icon) %> <%= l.fisrt_name %></td></tr>
+  <% end %></table>

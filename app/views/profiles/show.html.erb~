@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<% if @profile.photo.exists? then %>
+	<%= image_tag @profile.photo.url(:small) %>
+<% end %>
+
+<br>
+ <h1><%= @profile.profile_title %><br>
+ i have <strong style="background:yellow"><%= @profile.vehicle_type %></strong> ,
+ i can accomodate <%= @profile.accomodation_for %> people in my Vehicle 
+ 
+<p>
+  <b>User:</b>
+  <%= @profile.user_id %>
+</p>
+
+<p>
+  <b>Fisrt name:</b>
+  <%= @profile.fisrt_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @profile.last_name %>
+</p>
+
+<p>
+  <b>Job title:</b>
+  <%= @profile.job_title %>
+</p>
+
+<p>
+  <b>Source location:</b>
+  <%= @profile.source_location %>
+</p>
+
+<p>
+  <b>Destination location:</b>
+  <%= @profile.destination_location %>
+</p>
+
+
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Back', profiles_path %>

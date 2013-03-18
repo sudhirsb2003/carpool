@@ -1,0 +1,5 @@
+class DashboardController < ApplicationController
+  def index
+   @latest_addition = Profile.find_all_by_user_id()
+  end
+end

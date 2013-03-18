@@ -1,0 +1,38 @@
+<h1>Listing profiles</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Fisrt name</th>
+    <th>Last name</th>
+    <th>Job title</th>
+    <th>Source location</th>
+    <th>Destination location</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @profiles.each do |profile| %>
+  <tr>
+   <td>
+    <% if profile.photo.exists? then %>
+      <%= image_tag profile.photo.url(:icon) %>
+    <% end %>
+    </td>
+    <td><%= profile.user_id %></td>
+    <td><%= profile.fisrt_name %></td>
+    <td><%= profile.last_name %></td>
+    <td><%= profile.job_title %></td>
+    <td><%= profile.source_location %></td>
+    <td><%= profile.destination_location %></td>
+    <td><%= link_to 'Show', profile %></td>
+    <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
+    <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Profile', new_profile_path %>

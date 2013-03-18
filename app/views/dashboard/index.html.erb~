@@ -1,0 +1,20 @@
+<div id="header-fixed">
+<logo>
+  <%= image_tag('carpool.jpeg', :size=>"100x100") %>
+</logo>
+
+<h1>Welcome to CarPool </h1>
+
+<strong style="float:right">
+<% if signed_in? %>
+  <h3><%= current_user.email %> |   <%= link_to "LOGOUT", destroy_user_session_path %></h3>
+<% else %>
+  </h3><%= link_to "Login", user_session_path %> |   <%= link_to "Register", new_user_registration_path %></h3>
+<% end %>
+</strong></h4>
+</div><hr>
+<table>
+<div id="latest_addition">
+  <% @latest_addition.each do |l| %>
+   <tr><td><%= image_tag l.photo.url(:icon) %> <%= l.fisrt_name %></td></tr>
+  <% end %></table>
