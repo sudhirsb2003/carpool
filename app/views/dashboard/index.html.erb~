@@ -1,20 +1,16 @@
-<div id="header-fixed">
-<logo>
-  <%= image_tag('carpool.jpeg', :size=>"100x100") %>
-</logo>
-
-<h1>Welcome to CarPool </h1>
-
-<strong style="float:right">
-<% if signed_in? %>
-  <h3><%= current_user.email %> |   <%= link_to "LOGOUT", destroy_user_session_path %></h3>
-<% else %>
-  </h3><%= link_to "Login", user_session_path %> |   <%= link_to "Register", new_user_registration_path %></h3>
-<% end %>
-</strong></h4>
-</div><hr>
-<table>
-<div id="latest_addition">
+<style>
+ .activity{margin-left:90px;padding-bottom:-10px;border-left:0px solid black;padding:5px;}
+hr {
+  border: 0;
+  width: 100%;
+  color: #f00;
+  background-color: #f00;
+  height: 1px;
+}
+</style>
   <% @latest_addition.each do |l| %>
-   <tr><td><%= image_tag l.photo.url(:icon) %> <%= l.fisrt_name %></td></tr>
-  <% end %></table>
+      <%= image_tag l.photo.url(:icon) %>
+      <span class="activity"> Welcome <%= l.fisrt_name %> ! Joined <%= time_tag l.created_at %><br>
+       has a <%= l.vehicle_type %> and he can accomodate <%= l.accomodation_for %> people .</span><hr>
+  <% end %>
+</div>

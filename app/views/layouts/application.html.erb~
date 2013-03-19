@@ -88,7 +88,7 @@
  <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, :id => "flash_#{name}" %>
  <% end %>
-     <h1><%= link_to "CARPOOL", "/" %></h1><br><br>
+     <u><%= link_to "CARPOOL", "/" %></u><br><br>
       <h2>
       </h2><hr>
       <%= content_tag :h3, yield(:title) if show_title? %>

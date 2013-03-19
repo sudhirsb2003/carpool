@@ -34,13 +34,11 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :'I am a' %><br>
-      <select name="profile[profile_title]" id="bloc">
-       <option value="Lift Seeker" selected="selected">Lift Seeker</option>
-       <option value="Vehicle Owner">Vehicle Owner</option>
-      </select>
-  </div>
+      <% if current_user.role=="Lift_Provider" %>
+        <strong style="padding:5px;background:yellow"> i am a carpooler </strong>
+      <% else %>
+        <strong style="padding:5px;background:yellow"> i am a carseeker </strong>           
+      <% end %>
 
     	<div class="larger">
 	  <div class="field">

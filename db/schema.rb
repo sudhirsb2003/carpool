@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130318081400) do
+ActiveRecord::Schema.define(:version => 20130319110736) do
 
   create_table "profiles", :force => true do |t|
     t.integer  "user_id"
@@ -20,14 +20,32 @@ ActiveRecord::Schema.define(:version => 20130318081400) do
     t.string   "job_title"
     t.string   "source_location"
     t.string   "destination_location"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.string   "profile_title"
     t.string   "vehicle_type"
     t.integer  "accomodation_for"
+    t.string   "gender"
+    t.string   "participant"
+    t.string   "organisation_name"
+    t.string   "city"
+    t.text     "address"
+    t.string   "city_of_residence"
+    t.string   "state_of_residence"
+    t.integer  "pincode"
+    t.string   "organisation_landmark"
+    t.time     "start_time"
+    t.time     "reaching_time"
+    t.string   "destination_landmark"
+    t.text     "description"
+    t.string   "driving_licence_number"
+    t.string   "issueing_state"
+    t.string   "issueing_city"
+    t.string   "vehicle_number_1"
+    t.string   "vehicle_number_2"
   end
 
   create_table "users", :force => true do |t|

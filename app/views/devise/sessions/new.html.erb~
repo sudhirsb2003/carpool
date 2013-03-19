@@ -1,0 +1,70 @@
+<style>
+.left_side 
+      {
+     float: left;
+     margin: 20px 0 20px 0;
+     padding: 25px;
+     width: 390px;
+     background-color: #FFFFFF;
+     color: #000000; 
+      }
+.right_side 
+     {
+     float:right;
+     width:580px;
+     color: #000000;
+     background-color: #FFFFFF;
+     margin: 20px 0px 20px 0px;
+     padding-top:25px;
+     padding-left:50px;
+     border-left:1px solid black;
+     }	  	  
+
+</style>
+
+<div class="left_side">
+<h2><u>LOGIN</u></h2>
+
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <div><%= f.label :email %>
+  <%= f.email_field :email, :autofocus => true %></div>
+
+  <div><%= f.label :password %>
+  <%= f.password_field :password %></div>
+
+  <% if devise_mapping.rememberable? -%>
+   <br><%= f.check_box :remember_me %> Remember me<br><br>
+  <% end -%>
+
+  <div><%= f.submit "Sign in" %><br><br></div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+</div>
+
+
+
+<div class="right_side">
+<h2><u>NEW MEMBER</u></h2>
+
+<h2>Sign up</h2>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div> <%= f.label :Title %> <%= f.collection_select :role, User::ROLES, :to_s, :humanize %></div><br>
+
+  <div><%= f.label :email %>
+  <%= f.email_field :email, :autofocus => true %></div><br>
+
+  <div><%= f.label :password %>
+  <%= f.password_field :password %></div><br>
+
+  <div><%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %></div><br>
+
+
+  <div><%= f.submit "Sign up" %></div><br>
+<% end %>
+
+<%= render "devise/shared/links" %></div>
