@@ -21,6 +21,12 @@
     });
      </script>
 
+
+<style>
+input{width:180px;}
+  input .vehicle_number{width:50px;}
+</style>
+
 <%= form_for @profile  , :html => { :multipart => true } do |f| %>
   <% if @profile.errors.any? %>
     <div id="error_explanation">
@@ -33,58 +39,133 @@
       </ul>
     </div>
   <% end %>
+    
+   <%= f.hidden_field :user_id, :value=>current_user.id %>
 
       <% if current_user.role=="Lift_Provider" %>
-        <strong style="padding:5px;background:yellow"> i am a carpooler </strong>
+        <strong style="padding:5px;background:blue;color:white;border-radius:4px;"> i am a carpooler </strong><br><br>
       <% else %>
-        <strong style="padding:5px;background:yellow"> i am a carseeker </strong>           
+        <strong style="padding:5px;background:blue;color:white;border-radius:4px;"> i am a carseeker </strong><br><br>           
       <% end %>
 
-    	<div class="larger">
-	  <div class="field">
-	    <%= f.label :Vehicle_type %><br>
-	    <%= f.collection_select :vehicle_type, Profile::VEHICLE_TYPE, :to_s, :humanize %>
-	  </div>
+ <div class="row">
 
-	  <div class="field">
-	    <%= f.label :Accomodation_for %><br>
-	    <%= f.select :accomodation_for, ((0..500).map {|i| [i,i] } << ["No limit",nil]) %>
-	  </div>
-    	</div>
- 
+  <div class="field_name">
+    <%= f.label :Gender %>	
+    <%= f.radio_button :gender, "male" %> Male 
+    <%= f.radio_button :gender, "female" %> Female
+  </div><br><br><br><br>
 
-
-
-
-  <div class="field">
-    <%= f.label :upload_image %><br>	
+  <div class="field_name">
+    <%= f.label :upload_image %>	
     <%= f.file_field :photo %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id, :value=>current_user.id %>
-  </div>
-  <div class="field">
-    <%= f.label :fisrt_name %><br />
+  </div><br><br><br><br>
+
+  <div class="field_name">
+    <%= f.label :fisrt_name %>
     <%= f.text_field :fisrt_name %>
   </div>
-  <div class="field">
-    <%= f.label :last_name %><br />
+  <div class="field_name">
+    <%= f.label :last_name %>
     <%= f.text_field :last_name %>
   </div>
-  <div class="field">
-    <%= f.label :job_title %><br />
+  <div class="field_name">
+    <%= f.label :Address %>	
+    <%= f.text_field :address %>
+  </div>
+  <div class="field_name">
+    <%= f.label :City %>	
+    <%= f.text_field :city %>
+  </div>
+  <div class="field_name">
+    <%= f.label :'Pincode' %>	
+    <%= f.text_field :pincode %>
+  </div>
+  <div class="field_name">
+    <%= f.label :'city_of_residence' %>	
+    <%= f.text_field :city_of_residence %>
+  </div>
+  <div class="field_name">
+    <%= f.label :'state_of_residence' %>	
+    <%= f.text_field :state_of_residence %>
+  </div>
+  <div class="field_name">
+    <%= f.label :job_title %>
     <%= f.text_field :job_title %>
   </div>
-  <div class="field">
-    <%= f.label :source_location %><br />
+  <div class="field_name">
+    <%= f.label :source_location %>
     <%= f.text_field :source_location %>
   </div>
-  <div class="field">
-    <%= f.label :destination_location %><br />
+  <div class="field_name">
+    <%= f.label :destination_location %>
     <%= f.text_field :destination_location %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="field_name">
+    <%= f.label :'Name of Organisation Name' %>	
+    <%= f.text_field :organisation_name %>
   </div>
+  <div class="field_name">
+    <%= f.label :'Organisation Landmark' %>	
+    <%= f.text_field :organisation_landmark %>
+  </div>
+  <div class="field_name">
+    <%= f.label :'Start Time' %>	
+    <%= f.time_select :start_time %>
+  </div>
+  <div class="field_name">
+    <%= f.label :'Reaching Time' %>	
+    <%= f.time_select :reaching_time %>
+  </div><br><br><br><br><br><br><br><br><br><br>
+  <div class="field_name">
+    <%= f.label :'Destination Landmark' %>	
+    <%= f.text_field :destination_landmark %>
+  </div><br><br><br><br><br>
+  <div class="field_name">
+    <%= f.label :'Description' %>	
+    <%= f.text_area :description, :style=>"width:200px;height:100px;" %>
+  </div><br><br><br><br><br><br><br><br>
+<% unless current_user.role=="Lift_Seeker"%>
+
+<div class="larger">
+
+   <div class="field_name">
+     <%= f.label :Vehicle_type %>
+     <%= f.collection_select :vehicle_type, Profile::VEHICLE_TYPE, :to_s, :humanize %>
+   </div>
+
+   <div class="field_name">
+    <%= f.label :Accomodation_for %>
+    <%= f.select :accomodation_for, ((0..500).map {|i| [i,i] } << ["No limit",nil]) %>
+   </div>
+
+</div><br><br><br><br>
+
+  <div class="field_name">
+    <%= f.label :'vehicle_number' %>	
+    <%= f.text_field :vehicle_number_1, :style=>"width:70px;", :placeholder=>"ex: MH-03" %>
+    <%= f.text_field :vehicle_number_2, :style=>"width:95px;", :placeholder=>"ex: AV-4672" %>
+  </div><br><br><br>
+
+  <div class="field_name">
+    <%= f.label :'driving_licence_number' %>	
+    <%= f.text_field :driving_licence_number %>
+  </div>
+  <div class="field_name">
+    <%= f.label :'issueing_state' %>	
+    <%= f.text_field :issueing_state %>
+  </div>
+  <div class="field_name">
+    <%= f.label :'issueing_city' %>	
+    <%= f.text_field :issueing_city %>
+  </div>
+
+<% end %> 
+
+
+
+
+
+</div><br><br>
+    <%= f.submit %>
 <% end %>

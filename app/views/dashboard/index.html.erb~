@@ -3,14 +3,14 @@
 hr {
   border: 0;
   width: 100%;
-  color: #f00;
-  background-color: #f00;
+  color: silver;
+  background-color: silver;
   height: 1px;
 }
 </style>
   <% @latest_addition.each do |l| %>
       <%= image_tag l.photo.url(:icon) %>
-      <span class="activity"> Welcome <%= l.fisrt_name %> ! Joined <%= time_tag l.created_at %><br>
+      <span class="activity"> Welcome <%= l.fisrt_name %> ! Joined <%= time_tag l.created_at %>
        has a <%= l.vehicle_type %> and he can accomodate <%= l.accomodation_for %> people .</span><hr>
   <% end %>
 </div>
