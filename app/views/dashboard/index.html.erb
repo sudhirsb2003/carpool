@@ -1,16 +1,19 @@
 <style>
- .activity{margin-left:90px;padding-bottom:-10px;border-left:0px solid black;padding:5px;}
-hr {
-  border: 0;
-  width: 100%;
-  color: silver;
-  background-color: silver;
-  height: 1px;
+table {
+    *border-collapse: collapse; /* IE7 and lower */
+    border-spacing: 0;
+    width: 100%; 
+
 }
+
+td{ border-bottom:1px solid black; }
 </style>
+
+<table class="bordered">
+<thead>
   <% @latest_addition.each do |l| %>
-      <%= image_tag l.photo.url(:icon) %>
-      <span class="activity"> Welcome <%= l.fisrt_name %> ! Joined <%= time_tag l.created_at %>
-       has a <%= l.vehicle_type %> and he can accomodate <%= l.accomodation_for %> people .</span><hr>
+   <tr><td><%= image_tag l.photo.url(:icon) %></td>
+      <td> Welcome <%= l.fisrt_name %> ! Joined <%= time_tag l.created_at %>
+       has a <%= l.vehicle_type %> and he can accomodate <%= l.accomodation_for %> people .</td></tr><br>
   <% end %>
-</div>
+</tr></thead></table>

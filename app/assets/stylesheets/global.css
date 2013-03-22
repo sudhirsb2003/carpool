@@ -1,7 +1,7 @@
-<style>
 /* global.css styles */
 
 /* @group resets and elements */
+* { margin: 0; padding: 0; }
 
 html { height: 101%; font-family: “Helvetica Neue”, Arial, Helvetica, sans-serif; background: #fff; }
 body { font-size: 62.5%; font-family: Helvetica, Arial, sans-serif; line-height: 10%; }
@@ -50,7 +50,7 @@ ul#n li.sel a { color: #fff; text-shadow: 0px 1px 2px #88b618; }
 #userStats .pic { float: left; display: block; margin-right: 10px; }
 #userStats .pic a img { padding: 7px; background: #fff; border: 1px solid #ccc; }
 
-#userStats .data { float: left; display: block; position:  relative; width: 350px; height: 190px; padding: 4px; padding-left: 15px; background: #e6e6e6; overflow:  hidden; box-sizing: border-box; -moz-box-sizing: border-box; }
+#userStats .data { float: left; display: block; position:  relative; width: 350px; height: 166px; padding: 4px; padding-left: 15px; background: #e6e6e6; overflow:  hidden; box-sizing: border-box; -moz-box-sizing: border-box; }
 #userStats .data h1 { color: #474747; line-height: 1.6em; text-shadow: 0px 1px 1px #fff; }
 #userStats .data h3 { color: #666; line-height: 0.9em; margin-bottom: 5px; }
 #userStats .data h4 { font-size: 1.2em; line-height: 1.3em; }
@@ -61,7 +61,7 @@ ul#n li.sel a { color: #fff; text-shadow: 0px 1px 2px #88b618; }
 #userStats .data .sep { clear: both; margin-top: 40px; width: 320px; height: 1px; border-bottom: 1px solid #ccc; margin-bottom: 0; }
 #userStats .data ul.numbers { list-style: none; width: 320px; padding-top: 7px; margin-top: 0; border-top: 1px solid #fff; color: #676767; }
 #userStats .data ul.numbers li { width: 95px; float: left; display: block; padding-left: 8px; height: 50px; border-right: 1px dotted #bbb; text-transform: uppercase; }
-#userStats .data ul.numbers li strong { color: #434343; display: block; font-size: 2.4em; line-height: 1.1em; font-weight: bold; }
+#userStats .data ul.numbers li strong { color: #434343; display: block; font-size: 3.4em; line-height: 1.1em; font-weight: bold; }
 
 /* @group right */
 #right .gcontent { display: block; margin-bottom: 20px; }
@@ -87,112 +87,5 @@ html[xmlns] .clearfix { display: block; }
 * html .clearfix { height: 1%; }
 
 .nobrdr { border: 0px !important; }
-</style>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8" />
-	<title>Social User Profile Page in HTML5/CSS3[DEMO]</title>
-	<link rel="stylesheet" type="text/css" href="global.css" />
-</head>
-
-<body>	
-	
-	<!--<nav>
-		<ul id="n" class="clearfix">
-			<li><a href="#">Homepage</a></li>
-			<li class="sel"><a href="#">Profile</a></li>
-			<li><a href="#">Archives</a></li>
-			<li><a href="#">Badges</a></li>
-			<li><a href="#">Search</a></li>
-			<li><a href="#">Find Friends</a></li>
-		</ul>
-	</nav>-->
-	
-	<div id="content" class="clearfix">
-		<section id="left">
-			<div id="userStats" class="clearfix">
-				<div class="pic">
-					<a><%= image_tag @profile.photo.url(:small) %></a>
-				</div>
-				
-				<div class="data">
-			      <h1><%= @profile.fullname %></h1>
-					<h3><%= @profile.address %>,<%= @profile.city_of_residence %>,<%= @profile.state_of_residence %></h3>
-					<h4><a href="http://spyrestudios.com/">http://spyrestudios.com/</a></h4>
-					<div class="socialMediaLinks">
-						<a href="http://twitter.com/jakerocheleau" rel="me" target="_blank"><img src="img/twitter.png" alt="@jakerocheleau" /></a>
-						<a href="http://gowalla.com/users/JakeRocheleau" rel="me" target="_blank"><img src="img/gowalla.png" /></a>
-					</div>
-					<div class="sep"></div>
-					<ul class="numbers clearfix">
-						<li>Reputation<strong>185</strong></li>
-						<li>Checkins<strong>344</strong></li>
-						<li class="nobrdr">Days Out<strong>127</strong></li>
-					</ul>
-				</div>
-			</div>
-			
-			<h1>Description:</h1>
-			<p><%= @profile.description %></p>
-		</section>
-		
-		<section id="right">
-			<div class="gcontent">
-				<div class="head"><h1>Badges(3)</h1></div>
-				<div class="boxy">
-					<p>Keep working to unlock badges!</p>
-					
-					<div class="badgeCount">
-						<a href="#"><img src="img/foursquare-badge.png" /></a>
-						<a href="#"><img src="img/foursquare-badge.png" /></a>
-						<a href="#"><img src="img/foursquare-badge.png" /></a>
-					</div>
-					
-					<span><a href="#">See all…</a></span>
-				</div>
-			</div>
-			
-			<div class="gcontent">
-				<div class="head"><h1>Friends List</h1></div>
-				<div class="boxy">
-					<p>Your friends - 106 total</p>
-					
-					<div class="friendslist clearfix">
-						<div class="friend">
-							<a href="#"><img src="img/friend_avatar_default.jpg" width="30" height="30" alt="Jerry K." /></a><span class="friendly"><a href="#">Jerry K.</a></span>
-						</div>
-						
-						<div class="friend">
-							<a href="#"><img src="img/friend_avatar_default.jpg" width="30" height="30" alt="Katie F." /></a><span class="friendly"><a href="#">Katie F.</a></span>
-						</div>
-						
-						<div class="friend">
-							<a href="#"><img src="img/friend_avatar_default.jpg" width="30" height="30" alt="Ash K." /></a><span class="friendly"><a href="#">Ash K.</a></span>
-						</div>
-						
-						<div class="friend">
-							<a href="#"><img src="img/friend_avatar_default.jpg" width="30" height="30" alt="Sponge B." /></a><span class="friendly"><a href="#">Sponge B.</a></span>
-						</div>
-						
-						<div class="friend">
-							<a href="#"><img src="img/friend_avatar_default.jpg" width="30" height="30" alt="Frank" /></a><span class="friendly"><a href="#">Frank</a></span>
-						</div>
-						
-						<div class="friend">
-							<a href="#"><img src="img/friend_avatar_default.jpg" width="30" height="30" alt="Alexa S." /></a><span class="friendly"><a href="#">Alexa S.</a></span>
-						</div>
-					</div>
-					
-					<span><a href="#">See all...</a></span>
-				</div>
-			</div>
-		</section>
-	</div>
-</body>
-</html>
-
 
 
