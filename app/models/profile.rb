@@ -4,7 +4,7 @@ class Profile < ActiveRecord::Base
                   :address,:city,:pincode,:city_of_residence, :state_of_residence, :organisation_name, :organisation_landmark,
                   :start_time,:start_time, :start_time, :start_time, :start_time, :reaching_time,
                   :reaching_time, :reaching_time, :reaching_time, :reaching_time, :destination_landmark, :description,
-                  :vehicle_number_1, :vehicle_number_2, :driving_licence_number, :issueing_state, :issueing_city
+                  :vehicle_number_1, :vehicle_number_2, :driving_licence_number, :issueing_state, :issueing_city, :date_of_birth
 
   #validates_presence_of :profile_title, :message =>"profile title can not be empty !"
 
@@ -22,9 +22,12 @@ class Profile < ActiveRecord::Base
   validates_attachment_presence :photo
   validates_attachment_size :photo, :less_than => 5.megabytes
   validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']
+ 
+  belongs_to :user
+  
 
-  def fullname
-    fullname = "#{fisrt_name} #{last_name}"
+  def full_name
+    "#{fisrt_name} #{last_name}"
   end
 
 end

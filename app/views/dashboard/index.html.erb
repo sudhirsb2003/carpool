@@ -1,19 +1,43 @@
 <style>
-table {
-    *border-collapse: collapse; /* IE7 and lower */
-    border-spacing: 0;
-    width: 100%; 
+ body{font-family:ubuntu;font-size:15px;}
+ .img {width:50px;
+      border:0px solid black;
+      padding:10px;}
+ 
+ .sidebar{margin-left:100px;margin-top:-45px}
 
+hr{
+    border: none;
+    background-color: #ccc;
+    color: #ccc;
+    height: 1px;
+    width:700px;
+    margin-left:-100px;
 }
-
-td{ border-bottom:1px solid black; }
 </style>
 
-<table class="bordered">
-<thead>
   <% @latest_addition.each do |l| %>
-   <tr><td><%= image_tag l.photo.url(:icon) %></td>
-      <td> Welcome <%= l.fisrt_name %> ! Joined <%= time_tag l.created_at %>
-       has a <%= l.vehicle_type %> and he can accomodate <%= l.accomodation_for %> people .</td></tr><br>
+   <div class="img"><%= image_tag l.photo.url(:icon) %></div>
+    <div class="sidebar">
+         <strong><%= link_to l.full_name, l %> </strong>
+         <% unless l.user_id==current_user.id %>
+              | <%= link_to "SEND REQUEST", friendships_path(:friend_id => l), :method => :post %>
+          <% end %><br>
+
+         <small style="padding-left:0px;color:silver"> Member Since <%= time_tag l.created_at %> </small><br>  
+<strong>   
+     <% if l.user.role=="I_am_a_car_owner" %>
+        <small> has a <%= l.vehicle_type %>
+         from <%= l.source_location %> to <%= l.destination_location %><br>
+         he can accomodate <%= l.accomodation_for %> people</small>
+      <% else %>
+        <small>Is looking for transport accomodation
+        from <%= l.source_location %> to <%= l.destination_location%>
+        </small>
+      <% end %><hr><br>
+</strong>
+     </div>
+
   <% end %>
-</tr></thead></table>
+
+<%= paginate @latest_addition %>

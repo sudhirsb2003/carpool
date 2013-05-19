@@ -15,7 +15,8 @@ class ProfilesController < ApplicationController
   # GET /profiles/1.json
   def show
     @profile = Profile.find(params[:id])
-
+    @pending_friends = Friendship.find_all_by_user_id_and_state(current_user.id, 'pending')
+    @total_friends = Friendship.find_all_by_user_id_and_state(current_user.id, 'approved')
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @profile }
@@ -81,4 +82,5 @@ class ProfilesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

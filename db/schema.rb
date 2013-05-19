@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130319110736) do
+ActiveRecord::Schema.define(:version => 20130519063248) do
+
+  create_table "friendships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "state"
+  end
 
   create_table "profiles", :force => true do |t|
     t.integer  "user_id"
@@ -46,6 +54,8 @@ ActiveRecord::Schema.define(:version => 20130319110736) do
     t.string   "issueing_city"
     t.string   "vehicle_number_1"
     t.string   "vehicle_number_2"
+    t.date     "date_of_birth"
+    t.string   "vehicle_category"
   end
 
   create_table "users", :force => true do |t|
