@@ -11,10 +11,12 @@ gem 'jquery-rails'
 gem 'jquery_datepicker'
 gem 'workflow'
 gem 'quiet_assets', :group => :development
+gem 'heroku'
 
 
-
-
+group :productions do 
+ gem 'pg'
+end
 
 
 
