@@ -4,6 +4,7 @@ class ProfilesController < ApplicationController
   # GET /profiles.json
   def index
     @profiles = Profile.all
+    @json     = Profile.all.to_gmaps4rails
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,6 +16,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1.json
   def show
     @profile = Profile.find(params[:id])
+    @profile_map = @profile.to_gmaps4rails
     @pending_friends = Friendship.find_all_by_user_id_and_state(current_user.id, 'pending')
     @total_friends = Friendship.find_all_by_user_id_and_state(current_user.id, 'approved')
     respond_to do |format|

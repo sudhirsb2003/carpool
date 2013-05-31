@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130519063248) do
+ActiveRecord::Schema.define(:version => 20130531102959) do
 
   create_table "friendships", :force => true do |t|
     t.integer  "user_id"
@@ -56,6 +56,9 @@ ActiveRecord::Schema.define(:version => 20130519063248) do
     t.string   "vehicle_number_2"
     t.date     "date_of_birth"
     t.string   "vehicle_category"
+    t.boolean  "gmaps"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "users", :force => true do |t|

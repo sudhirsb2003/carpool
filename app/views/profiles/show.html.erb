@@ -1,4 +1,15 @@
+
+<div id ="maps">
+  <%= gmaps4rails(@profile_map) %>
+</div>
+
+<% for profile in @profile.nearbys(10) %>
+ <li><%= link_to profile.full_name, profile %> (<%= profile.distance.round(2) %> Kilometers)</li>
+<% end %>
+
+
 <% if @profile.user_id == current_user.id %>
+
 <div id="pending" style="float:right;margin-right:120px;">
 <p style="background:lightblue;color:black;padding:2px;text-align:center"> pending requests </p>
 <table>

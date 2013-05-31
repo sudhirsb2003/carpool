@@ -6,6 +6,7 @@
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
+    <%= stylesheet_link_tag 'gmaps4rails' %>
 <style>
   h1 a:link, h1 a:visited {color:green;}
 </style>
@@ -36,6 +37,7 @@
      <h1><%= link_to "SAHAYATA", "/" %> <%= image_tag 'car.png', :size=>"60x30" %> </h1><br><br>
       <%= content_tag :h3, yield(:title) if show_title? %>
       <%= yield %>
+      <%= yield :scripts %>
     </div>
   </body>
 

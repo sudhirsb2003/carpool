@@ -12,12 +12,18 @@ gem 'jquery_datepicker'
 gem 'workflow'
 gem 'quiet_assets', :group => :development
 gem 'heroku'
+gem 'gmaps4rails'
+gem "binding_of_caller"
+gem 'geocoder'
 
 
 group :productions do 
  gem 'pg'
 end
 
+group :development do 
+ gem "better_errors"
+end
 
 
 group :assets do

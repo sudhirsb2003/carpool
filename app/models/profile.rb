@@ -1,17 +1,12 @@
 class Profile < ActiveRecord::Base
+
   attr_accessible :destination_location, :fisrt_name, :job_title, :last_name, :source_location,
                   :user_id, :photo, :profile_title, :vehicle_type, :accomodation_for,:gender,
                   :address,:city,:pincode,:city_of_residence, :state_of_residence, :organisation_name, :organisation_landmark,
                   :start_time,:start_time, :start_time, :start_time, :start_time, :reaching_time,
                   :reaching_time, :reaching_time, :reaching_time, :reaching_time, :destination_landmark, :description,
-                  :vehicle_number_1, :vehicle_number_2, :driving_licence_number, :issueing_state, :issueing_city, :date_of_birth
-
-  #validates_presence_of :profile_title, :message =>"profile title can not be empty !"
-
-  #validates :job_title, :presence => true, :uniqueness => true, :length => { :maximum => 100 }
-  #validates :budget, :presence => true, :length => { :within => 1..10000000 }
-
-
+                  :vehicle_number_1, :vehicle_number_2, :driving_licence_number, :issueing_state, :issueing_city, :date_of_birth,
+                  :latitude, :longitude, :gmaps
 
   VEHICLE_TYPE  = %w[Car Auto-Rikshaw Mini-Bus Bus Jeep 8-Seater Two-Wheeler]
 
@@ -29,5 +24,18 @@ class Profile < ActiveRecord::Base
   def full_name
     "#{fisrt_name} #{last_name}"
   end
+
+  acts_as_gmappable
+
+  def gmaps4rails_address
+   #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
+   "#{self.address}, #{self.city}, #{self.state_of_residence}" 
+  end
+
+  def gmaps4rails_infowindow
+    "<h4>#{fisrt_name} #{last_name}</h4>" << "<h4>#{address}</h4>"
+  end
+  geocoded_by :address
+  after_validation :geocode, :if => :address_changed?
 
 end
